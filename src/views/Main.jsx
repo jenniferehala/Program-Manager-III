@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {useHistory, Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 const Main = (props) => {
     const [authors, setAuthors] = useState([])
@@ -23,48 +23,54 @@ const Main = (props) => {
             .then(res => {
                 console.log("im here");
                 setAuthors(authors.filter(authors => authors._id !== _id));
-                
+
             })
             .catch(err => console.error(err));
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Favorite Author</h1>
-            <br/>
+            <br />
             <p>We have quotes by:</p>
-            {
-                authors.map((author, i) => {
-                    return (
+            <table class="table table-bordered">
 
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Author</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">ReleaseYear</th>
-                                    <th scope="col">Action Available</th>
-                                </tr>
-                            </thead>
+                <thead>
+                    <tr>
+                        <th scope="col">Author</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">ReleaseYear</th>
+                        <th scope="col">Action Available</th>
+                    </tr>
+                </thead>
+                {
+                    authors.map((author, i) => {
+                        return (
+
+
+
                             <tbody>
                                 <tr>
-                                    <th scope="row">{author.name}</th>
-                                    <td>{author.title}</td>
+                                    <td>
+
+                                        <Link to={`/authors/` + author._id}>{author.name}</Link>
+                                    </td>
+                                    <td> {author.title} </td>
                                     <td>{author.releaseYear}</td>
                                     <td>
-                                        <Link to={`/authors/${author._id}/edit`} >Edit</Link> | 
-                                        <button onClick={(e)=>{deleteAuthor(author._id)}}>Delete</button>
-                                        </td>
+                                        <Link to={`/authors/${author._id}/edit`} >Edit</Link> |
+                                        <Link onClick={(e) => { deleteAuthor(author._id) }}>Delete</Link>
+                                    </td>
                                 </tr>
                             </tbody>
-                        </table>
 
-                                )
+                        )
 
-                })
-            }
-                            </div>
-                            )
+                    })
+                }
+            </table>
+        </div>
+    )
 }
 
-                            export default Main;
+export default Main;

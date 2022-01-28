@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { useHistory } from 'react-router';
 
 const Create = (props) => {
 
+    const history = useHistory()
     const [form,setForm] = useState({
         name: "",
         title: "",
@@ -11,6 +13,7 @@ const Create = (props) => {
         description: ""
     })
     const [errors,setErrors] = useState({})
+    
 
     const onChangeHandler = (event) => {
         console.log("im here")
@@ -22,7 +25,7 @@ const Create = (props) => {
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
-        // console.log(form);
+        // history.push("/")
         axios.post("http://localhost:8000/api/authors/create", form)
             .then(res=>{
                 console.log(res);

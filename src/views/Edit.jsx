@@ -7,10 +7,10 @@ const Edit = (props) => {
     const history = useHistory();
     const {_id} = useParams();
     const [form,setForm] = useState({
-        // name: "",
-        // title: "",
-        // releaseYear: null,
-        // description: ""
+        name: "",
+        title: "",
+        releaseYear: null,
+        description: ""
     })
     const [errors,setErrors] = useState({})
 
@@ -36,9 +36,8 @@ const Edit = (props) => {
     }
 
     const onUpdateHandler = (event) => {
-        // console.log(form);
         event.preventDefault();
-        
+        history.push("/")
         axios.patch(`http://localhost:8000/api/authors/${_id}/update`, form)
             .then(res=>{
                 console.log(res.data.results);
@@ -78,6 +77,7 @@ const Edit = (props) => {
                 <input type="submit" className="btn btn-success mt-5" />
             </form>
             <Link to="/"><button >Cancel</button></Link>
+            <Link to={`/authors/` + form._id}><button>View</button></Link>
         </div>
     )
 }
