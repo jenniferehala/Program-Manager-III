@@ -1,6 +1,10 @@
-.App {
+/* .App {
+  width: 100%;
   text-align: center;
-}
+  min-height: 100vh;
+  background-color: black;
+  color: white
+} */
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +39,17 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav{
+  height: 70px;
+  width: 100%;
+  background-color: rgb(50, 49, 49);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.table{
+  border: 2px solid black;
 }
