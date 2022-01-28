@@ -33,7 +33,7 @@ const Main = (props) => {
             <h1>Favorite Author</h1>
             <br />
             <p>We have quotes by:</p>
-            <table class="table table-bordered">
+            <table className="table table-bordered">
 
                 <thead>
                     <tr>
@@ -49,7 +49,7 @@ const Main = (props) => {
 
 
 
-                            <tbody>
+                            <tbody key={i}>
                                 <tr>
                                     <td>
 
@@ -59,7 +59,7 @@ const Main = (props) => {
                                     <td>{author.releaseYear}</td>
                                     <td>
                                         <Link to={`/authors/${author._id}/edit`} >Edit</Link> |
-                                        <Link onClick={(e) => { deleteAuthor(author._id) }}>Delete</Link>
+                                        <button onClick={(e) => { deleteAuthor(author._id) }}>Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
